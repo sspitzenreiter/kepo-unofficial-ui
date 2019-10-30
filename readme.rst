@@ -18,6 +18,8 @@ Jika anda mau menggunakannya bersama kelompok dalam 1 pc, silahkan ikuti langkah
 4.	Setelah itu, isi semua informasi ketua dan anggota
 
 Jika anda mau menggunakannya sendiri, silahkan ikuti langkah berikut : 
+::
+
 1.	Edit file kepo_unofficial_ui_beta.py
 2.	Setting config dimulai pada fungsi config (self)
 3.	Lalu isi self.type jadi "personal" bukan "kelompok"
@@ -25,7 +27,9 @@ Jika anda mau menggunakannya sendiri, silahkan ikuti langkah berikut :
 
 
 Saat sudah melakukan hal tersebut, silahkan ikuti langkah berikut : 
+::
+
 1.	Copy file ke folder kepo
 2.	Edit ui_run.bat
-3. 	ganti <AnacondaDir> menjadi lokasi anaconda anda
+3. 	Ganti <AnacondaDir> menjadi lokasi anaconda anda dan save
 4.	Lalu coba jalankan
