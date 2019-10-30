@@ -15,12 +15,31 @@ import wx.xrc
 ###########################################################################
 
 class MyFrame1 ( wx.Frame ):
-	
+	def config (self):
+		#Tipe pemakaian
+		self.type="kelompok"
+		#Info bersama
+		self.PROYEK="Proyek 3"
+		self.PASSWORD="sariasih54"
+		self.Pembimbing="MHK"
+		
+		self.NPM_Ketua="1174035"
+		self.Nama_Ketua="Luthfi"
+		self.userrepo_ketua="sspitzenreiter"
+		self.repo_ketua="Aplikasi-Sidang-Poltekpos"
+		
+		self.NPM_Anggota="1174040"
+		self.Nama_Anggota="Hagan"
+		self.userrepo_anggota="haganz753" #User Repo
+		self.repo_anggota="Proyek3_Hagan" #Nama Repo
+		
 	def __init__( self, parent ):
+		self.config()
 		self.NPM = ""
 		self.Nilai=""
 		self.Bimbingan=""
 		self.pertemuan=""
+		
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 197,201 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 		
 		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
@@ -33,7 +52,7 @@ class MyFrame1 ( wx.Frame ):
 		self.m_staticText1111.Wrap( -1 )
 		bSizer2111.Add( self.m_staticText1111, 0, wx.ALL|wx.EXPAND, 5 )
 		
-		comboMhsChoices = [ u"Luthfi", u"Hagan" ]
+		comboMhsChoices = [ u""+self.Nama_Ketua, u""+self.Nama_Anggota ]
 		self.comboMhs = wx.ComboBox( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, comboMhsChoices, 0 )
 		bSizer2111.Add( self.comboMhs, 0, wx.ALL|wx.FIXED_MINSIZE, 5 )
 		
@@ -96,6 +115,11 @@ class MyFrame1 ( wx.Frame ):
 		self.progressInput.Bind( wx.EVT_CHAR, lambda event:self.CharEventProgress(event, "progress") )
 		self.nilaiInput.Bind( wx.EVT_CHAR, lambda event:self.CharEventProgress(event, "nilai"))
 		self.pertemuanInput.Bind( wx.EVT_CHAR, lambda event:self.CharEventProgress(event, "pertemuan"))
+		if self.config=="personal":
+			self.NPM = self.NPM_Ketua
+			self.userrepo=self.userrepo_ketua
+			self.namarepo=self.repo_ketua
+			self.comboMhs.Disable()
 	
 	def __del__( self ):
 		pass
@@ -121,17 +145,14 @@ class MyFrame1 ( wx.Frame ):
 		self.generateQR()
 
 	def GantiConfig( self, event ):
-		self.PROYEK="Proyek 3"
-		self.PASSWORD="sariasih54"
-		self.Pembimbing="MHK"
-		if event.GetString() == "Luthfi":
-			self.NPM = "1174035"
-			self.userrepo="sspitzenreiter"
-			self.namarepo="Aplikasi-Sidang-Poltekpos"
-		if event.GetString() == "Hagan":
-			self.NPM = "1174040"			
-			self.userrepo="sspitzenreiter"
-			self.namarepo="Aplikasi-Sidang-Poltekpos"
+		if event.GetString() == self.Nama_Ketua:
+			self.NPM = self.NPM_Ketua
+			self.userrepo=self.userrepo_ketua
+			self.namarepo=self.repo_ketua
+		if event.GetString() == self.Nama_Anggota:
+			self.NPM = self.NPM_Anggota
+			self.userrepo=self.userrepo_anggota
+			self.namarepo=self.repo_anggota
 		event.Skip()
 		
 	def generateQR( self ):
