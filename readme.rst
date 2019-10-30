@@ -9,7 +9,9 @@ Aplikasi ini tidak resmi dari developer asli dari kepo melainkan dari user yang 
 *******************
 How To Config
 *******************
-Jika anda mau menggunakannya bersama kelompok dalam 1 pc, silahkan ikuti langkah berikut : ::
+Jika anda mau menggunakannya bersama kelompok dalam 1 pc, silahkan ikuti langkah berikut : 
+::
+
 1.	Edit file kepo_unofficial_ui_beta.py
 2.	Setting config dimulai pada fungsi config (self)
 3.	Lalu ganti self.type="personal" jadi self.type="kelompok"
